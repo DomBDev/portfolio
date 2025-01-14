@@ -2,17 +2,11 @@
 
 My personal portfolio website built with Next.js, NestJS, and PostgreSQL. Features dynamic theming, an admin CMS, and interactive components.
 
-## Tech Stack
-
-- **Frontend**: Next.js, Tailwind CSS, Framer Motion, Radix UI
-- **Backend**: NestJS, PostgreSQL, Prisma
-- **Infrastructure**: Docker, DigitalOcean App Platform
-- **CI/CD**: GitHub Actions
-
 ## Project Overview
 
-This is my personal portfolio website that showcases my work, skills, and experiences. The project features:
+This is my personal portfolio website that showcases my work, skills, and experiences. While the code is open source for reference and inspiration, it's primarily maintained by me for my personal use.
 
+### Features
 - Dynamic theme generation using OpenAI
 - Custom CMS for content management
 - Interactive project showcases
@@ -20,16 +14,21 @@ This is my personal portfolio website that showcases my work, skills, and experi
 - Real-time admin notifications
 - Performance metrics dashboard
 
+## Tech Stack
+
+- **Frontend**: Next.js, Tailwind CSS, Framer Motion, Radix UI
+- **Backend**: NestJS, PostgreSQL, Prisma
+- **Infrastructure**: Docker, DigitalOcean App Platform
+- **CI/CD**: GitHub Actions
+
 ## Development Setup
 
 ### Prerequisites
-
 - Node.js (v18 or later)
-- Docker and Docker Compose
+- Docker Desktop
 - Git
 
 ### Local Development
-
 1. Clone the repository:
 ```bash
 git clone https://github.com/bonannidominic/portfolio.git
@@ -58,6 +57,11 @@ The application will be available at:
 - PostgreSQL: localhost:5432
 - Redis: localhost:6379
 
-## License
+## Documentation
+- [Architecture Overview](docs/ARCHITECTURE.md)
+- [Deployment Guide](docs/DEPLOYMENT.md)
+- [Security Policy](docs/SECURITY.md)
+- [Testing Strategy](docs/TESTING.md)
 
+## License
 This project is proprietary and confidential. The source code is provided as reference and inspiration for others building their own portfolio websites. See the [LICENSE](./LICENSE) file for details. 
