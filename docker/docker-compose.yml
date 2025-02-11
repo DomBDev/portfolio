@@ -1,33 +1,31 @@
-version: '3.8'
-
 services:
   frontend:
     build:
-      context: ../frontend
+      context: ../app/frontend
       dockerfile: Dockerfile
+      target: production
     ports:
       - "3000:3000"
-    volumes:
-      - ../frontend:/app
-      - /app/node_modules
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
+      - NEXT_TELEMETRY_DISABLED=1
     depends_on:
       - backend
 
   backend:
     build:
-      context: ../backend
+      context: ../app/backend
       dockerfile: Dockerfile
+      target: production
     ports:
       - "3001:3001"
-    volumes:
-      - ../backend:/app
-      - /app/node_modules
     environment:
-      - NODE_ENV=development
+      - NODE_ENV=production
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/portfolio
       - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=dev-secret-key
+      - CORS_ORIGIN=http://localhost:3000
     depends_on:
       - db
       - redis
@@ -49,6 +47,14 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
 
 volumes:
   postgres_data:

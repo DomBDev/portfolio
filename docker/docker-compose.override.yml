@@ -1,50 +1,19 @@
-version: '3.8'
-
 services:
   frontend:
     build:
       target: development
+    volumes:
+      - ../app/frontend:/app
+      - /app/node_modules
+      - /app/.next
     environment:
       - NODE_ENV=development
-      - NEXT_PUBLIC_API_URL=http://localhost:3001/api/v1
-    command: npm run dev
 
   backend:
     build:
       target: development
-    environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/portfolio
-      - REDIS_URL=redis://redis:6379
-      - JWT_SECRET=dev-secret-key
-      - CORS_ORIGIN=http://localhost:3000
-    command: npm run start:dev
     volumes:
-      - ../backend:/app
+      - ../app/backend:/app
       - /app/node_modules
-
-  db:
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-      - ./init-scripts:/docker-entrypoint-initdb.d
-
-  redis:
-    ports:
-      - "6379:6379"
-    command: redis-server --appendonly yes
-    volumes:
-      - redis_data:/data
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-
-volumes:
-  postgres_data:
-  redis_data: 
+    environment:
+      - NODE_ENV=development 

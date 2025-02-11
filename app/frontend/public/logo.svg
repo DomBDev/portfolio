@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64" height="44" viewBox="-2 4 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891B2"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="fillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0891B2" stop-opacity="0.1"/>
+      <stop offset="50%" stop-color="#0284C7" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#0891B2" stop-opacity="0.1"/>
+    </linearGradient>
+    <mask id="logoMask">
+      <path
+        d="M28 9L18 9C-1 9 -1 36 18 36L28 36L28 9Z
+           M24 14L18 14C5 14 4 30 18 31L24 31L24 14Z
+           M30 9L47 9C57 9 57 22 49 22C57 22 57 36 47 36L30 36L30 32L47 32C52 32 52 25 47 25L30 25L30 19L47 19C52 19 52 13 47 13L30 13L30 9Z"
+        fill="white"
+      />
+    </mask>
+  </defs>
+
+  <rect
+    x="-2"
+    y="4"
+    width="64"
+    height="40"
+    fill="url(#fillGradient)"
+    mask="url(#logoMask)"
+  />
+
+  <path
+    d="M28 9L18 9C-1 9 -1 36 18 36L28 36L28 9"
+    stroke="url(#strokeGradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <path
+    d="M24 14L18 14C5 14 4 30 18 31L24 31L24 14"
+    stroke="url(#strokeGradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.7"
+  />
+  <path
+    d="M30 9L47 9C57 9 57 22 49 22C57 22 57 36 47 36L30 36L30 32L47 32C52 32 52 25 47 25L30 25L30 19L47 19C52 19 52 13 47 13L30 13L30 9"
+    stroke="url(#strokeGradient)"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+</svg>

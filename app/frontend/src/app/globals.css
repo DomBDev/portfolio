@@ -1,0 +1,228 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme */
+    --light: 34 18% 89%;  /* #E2DED7 */
+    --dark: 0 0% 13%;     /* #202020 */
+    --card-light: 32 12% 84%;  /* #CDC9C3 */
+    --accent: 161 80% 42%;     /* #15C286 */
+    
+    font-family: var(--font-inter);
+  }
+
+  .dark {
+    /* Dark theme */
+    --light: 0 0% 93%;    /* #EEEEEE */
+    --dark: 240 5% 10%;   /* #1A1A1D */
+    --card-dark: 240 7% 19%;  /* #2E2E33 */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk);
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-light text-dark transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-accent text-light px-6 py-3 rounded-lg font-medium transition-all duration-300
+    hover:bg-opacity-90 hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply border-2 border-dark dark:border-light px-6 py-3 rounded-lg font-medium transition-all duration-300
+    hover:bg-dark hover:text-light dark:hover:bg-light dark:hover:text-dark hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .section-container {
+    @apply container mx-auto px-4 py-16 md:py-24;
+  }
+
+  .card {
+    @apply bg-card-light dark:bg-card-dark rounded-lg p-6 transition-all duration-300
+    hover:shadow-lg hover:scale-[1.01];
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* Logo Animations */
+@keyframes movePattern {
+  0% { background-position: 0 0; }
+  100% { background-position: 16px 16px; }
+}
+
+@keyframes particle-0 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(10px, -10px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes particle-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-10px, -10px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes particle-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(10px, 10px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes particle-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(-10px, 10px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes particle-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(0, -15px) scale(1.2); opacity: 0.8; }
+}
+
+@keyframes particle-5 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  50% { transform: translate(0, 15px) scale(1.2); opacity: 0.8; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children > * {
+  opacity: 0;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hero Section Animations */
+@keyframes gradient-xy {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(5%, 5%);
+  }
+}
+
+@keyframes drift-slow {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-5%, -5%);
+  }
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
+  background-size: 400% 400%;
+}
+
+.animate-drift {
+  animation: drift 20s ease-in-out infinite;
+}
+
+.animate-drift-slow {
+  animation: drift-slow 25s ease-in-out infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(30deg);
+  }
+  20% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(-30deg);
+  }
+  30% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(0deg);
+  }
+  40% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(30deg);
+  }
+  50% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-glitch {
+  animation: glitch 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Scrollbar Styling */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+} 

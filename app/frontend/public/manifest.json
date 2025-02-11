@@ -1,0 +1,22 @@
+{
+  "name": "Dominic Bonanni",
+  "short_name": "DB Portfolio",
+  "description": "My personal portfolio website showcasing my work, skills, and experiences as a software engineer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E2DED7",
+  "theme_color": "#15C286",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ]
+} 
