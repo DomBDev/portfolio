@@ -1,0 +1,164 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Project {
+  id            String    @id @default(cuid())
+  title         String
+  subtitle      String?
+  description   String
+  imageUrl      String?
+  demoUrl       String?
+  githubUrl     String?
+  tags          String    // Stored as JSON string
+  technologies  String    // Stored as JSON string
+  media         String    // Stored as JSON string
+  featured      Boolean   @default(false)
+  order         Int       @default(0)
+  
+  // Timeline
+  duration      String?
+  startDate     DateTime?
+  endDate       DateTime?
+  status        String?
+  
+  // Details
+  role          String?
+  teamSize      Int?
+  challenges    String    // Stored as JSON string
+  highlights    String    // Stored as JSON string
+  
+  // Metrics and Rich Content
+  metrics       String?   // Stored as JSON string
+  sections      String    // Stored as JSON string
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model BlogPost {
+  id          String    @id @default(cuid())
+  title       String
+  slug        String    @unique
+  content     String    // Main content in Markdown
+  excerpt     String?   // Short preview text
+  coverImage  String?   // Hero/thumbnail image
+  
+  // Meta information
+  author      String?
+  readingTime Int?      // Estimated reading time in minutes
+  views       Int       @default(0)
+  likes       Int       @default(0)
+  
+  // Content organization
+  category    String?   // Main category
+  tags        String    // Stored as JSON string of tags
+  series      String?   // For post series/documentation (e.g., "React Tutorial")
+  seriesOrder Int?      // Order in the series
+  
+  // Documentation specific
+  tableOfContents String?    // Stored as JSON string of headings/sections
+  previousPost    String?    // ID of previous post in series
+  nextPost        String?    // ID of next post in series
+  
+  // Rich content features
+  sections    String    // Stored as JSON string for structured content blocks
+  codeSnippets String?  // Stored as JSON string of reusable code examples
+  resources   String?   // Stored as JSON string of related links/resources
+  
+  // Status and visibility
+  published   Boolean   @default(false)
+  featured    Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // SEO
+  metaTitle   String?
+  metaDescription String?
+  canonicalUrl String?
+}
+
+model Admin {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  password      String    // Hashed password
+  username      String    @unique
+  firstName     String?
+  lastName      String?
+  avatar        String?   // URL to profile image
+  
+  // Security
+  role          String    @default("admin") // For future role-based access
+  isActive      Boolean   @default(true)
+  lastLogin     DateTime?
+  loginAttempts Int       @default(0)
+  lockedUntil   DateTime?
+  twoFactorEnabled Boolean @default(false)
+  twoFactorSecret String?
+  
+  // Session management
+  sessions      String?   // Stored as JSON string of active sessions
+  
+  // Preferences
+  preferences   String?   // Stored as JSON string of UI/notification preferences
+  
+  // Activity tracking
+  lastActivity  DateTime?
+  activityLog   String?   // Stored as JSON string of recent actions
+  
+  // Relations to content (counts maintained for quick access)
+  projectCount  Int       @default(0)
+  postCount     Int       @default(0)
+  
+  // System
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Theme {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  
+  // Theme properties
+  type        String   @default("custom")  // 'system', 'custom'
+  baseTheme   String   @default("light")   // 'light', 'dark'
+  
+  // Color palette (stored as JSON string)
+  colors      String   // {
+                      //   primary: { main: "#...", light: "#...", dark: "#..." },
+                      //   secondary: { main: "#...", light: "#...", dark: "#..." },
+                      //   background: { default: "#...", paper: "#..." },
+                      //   text: { primary: "#...", secondary: "#..." },
+                      //   error: "#...",
+                      //   warning: "#...",
+                      //   info: "#...",
+                      //   success: "#..."
+                      // }
+  
+  // Component-specific styles (stored as JSON string)
+  components  String?  // Custom component styles
+  
+  // Typography (stored as JSON string)
+  typography  String?  // Font families, sizes, weights
+  
+  // Theme metadata
+  thumbnail   String?  // Preview image URL
+  featured    Boolean  @default(false)
+  active      Boolean  @default(false)  // Default theme for new visitors
+  
+  // Creator reference (links to Admin)
+  createdById String?
+  
+  // System
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
